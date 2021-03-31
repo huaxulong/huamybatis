@@ -14,7 +14,7 @@ import java.util.List;
  */
 public interface Executor {
 
-    void doUpdate(MappedStatement mappedStatement, Object parameter);
+    int doUpdate(MappedStatement mappedStatement, Object parameter);
 
     <E> List<E> doQuery(MappedStatement mappedStatement, Object parameter);
 }

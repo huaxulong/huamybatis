@@ -23,8 +23,16 @@ public class Testjdbc {
         SqlSession session = factory.openSession();
 
         UserMapper mapper = session.getMapper(UserMapper.class);
+        System.out.println("select");
         List<User> list = mapper.getAll();
         System.out.println(list);
+
+        System.out.println("insert");
+        User user = new User();
+        user.setName("好好向上");
+        int cnt = mapper.addUser(user);
+        System.out.println(cnt);
+
 
     }
 

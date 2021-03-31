@@ -57,14 +57,19 @@ public class MapperProxy<T> implements InvocationHandler, Serializable {
                 break;
             }
             case INSERT:{
-                sqlSession.update(statementId, args);
+                sqlSession.insert(statementId, args);
                 break;
             }
             case UPDATE:{
+                sqlSession.update(statementId, args);
+                break;
+            }
+            case DELETE:{
+                sqlSession.delete(statementId, args);
                 break;
             }
             case DEFAULT:{
-
+                System.out.println("其他语句，先暂时不做处理");
             }
         }
         return result;

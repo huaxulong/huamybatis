@@ -45,6 +45,8 @@ public final class XmlUtil {
                     statement.setSqlCommandType(Constant.SqlType.SELECT);
                 }else if (Constant.SqlType.UPDATE.value().equals(elementName)){
                     statement.setSqlCommandType(Constant.SqlType.UPDATE);
+                }else if (Constant.SqlType.INSERT.value().equals(elementName)){
+                    statement.setSqlCommandType(Constant.SqlType.INSERT);
                 }else {
                     statement.setSqlCommandType(Constant.SqlType.DEFAULT);
                 }

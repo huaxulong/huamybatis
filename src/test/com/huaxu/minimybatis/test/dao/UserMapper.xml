@@ -13,4 +13,12 @@
         update user set name = '张三2' where id = #{id}
     </update>
 
+    <insert id="addUser" parameteType="com.huaxu.minimybatis.test.pojo.User">
+        INSERT INTO user ( name ) VALUES ( #{user.name} )
+    </insert>
+
+    <insert id="addUserName">
+        insert into user values (#{name})
+    </insert>
+
 </mapper>

@@ -43,8 +43,8 @@ public class SimpleStatementHandler implements StatementHandler{
     }
 
     @Override
-    public void update(PreparedStatement preparedStatement) throws SQLException {
-        preparedStatement.executeUpdate();
+    public int update(PreparedStatement preparedStatement) throws SQLException {
+        return preparedStatement.executeUpdate();
     }
 
     /**

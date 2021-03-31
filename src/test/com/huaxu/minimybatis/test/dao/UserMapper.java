@@ -2,6 +2,7 @@ package com.huaxu.minimybatis.test.dao;
 
 import com.huaxu.minimybatis.test.pojo.User;
 
+import javax.jws.soap.SOAPBinding;
 import java.util.List;
 
 /**
@@ -36,5 +37,13 @@ public interface UserMapper {
      * @param id
      */
     void updateUser(String id);
+
+    /**
+     * 新增用户
+     * @param user
+     * @return
+     */
+    int addUser(User user);
+
 
 }

@@ -59,6 +59,14 @@ public interface SqlSession {
     void insert(String statementId, Object parameter);
 
     /**
+     * 删除
+     * @param statementId
+     * @param parameter
+     * @return
+     */
+    int delete(String statementId, Object parameter);
+
+    /**
      * 获取配置类
      * @return
      */

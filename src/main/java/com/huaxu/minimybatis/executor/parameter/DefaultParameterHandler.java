@@ -25,6 +25,10 @@ public class DefaultParameterHandler implements ParameterHandler{
                     Object[] params = (Object[]) parameter;
                     for (int i = 0; i < params.length; i++) {
                         //Mapper保证传入参数类型匹配，这里就不做类型转换了
+                        // 如果是基本数据类型 或者 string
+
+                        // 如果不是基本数据类型
+
                         ps.setObject(i +1, params[i]);
                     }
                 }

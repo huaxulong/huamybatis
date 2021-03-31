@@ -59,6 +59,12 @@ public class DefaultSqlSession implements SqlSession {
     }
 
     @Override
+    public int delete(String statementId, Object parameter) {
+        MappedStatement mappedStatement = this.configuration.getMappedStatement(statementId);
+        return this.executor.doUpdate(mappedStatement, parameter);
+    }
+
+    @Override
     public Configuration getConfiguration() {
         return this.configuration;
     }

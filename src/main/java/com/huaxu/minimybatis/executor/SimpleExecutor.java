@@ -59,8 +59,24 @@ public class SimpleExecutor implements Executor{
     }
 
     @Override
-    public void doUpdate(MappedStatement mappedStatement, Object parameter) {
+    public int doUpdate(MappedStatement ms, Object parameter) {
+        try {
+            Connection connection = getConnect();
+            MappedStatement mappedStatement = configuration.getMappedStatement(ms.getSqlId());
 
+            SimpleStatementHandler statementHandler = new SimpleStatementHandler(mappedStatement);
+            PreparedStatement preparedStatement = statementHandler.prepare(connection);
+
+            // 对参数进行赋值
+            DefaultParameterHandler parameterHandler = new DefaultParameterHandler(parameter);
+            parameterHandler.setParameter(preparedStatement);
+
+            // 执行 update 语句
+            return statementHandler.update(preparedStatement);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return 0;
     }
 
     public Connection getConnect() throws SQLException{
