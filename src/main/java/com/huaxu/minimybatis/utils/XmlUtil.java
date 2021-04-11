@@ -4,7 +4,6 @@ import com.huaxu.minimybatis.constants.Constant;
 import com.huaxu.minimybatis.mapping.MappedStatement;
 import com.huaxu.minimybatis.session.Configuration;
 import org.dom4j.Document;
-import org.dom4j.DocumentException;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
 
