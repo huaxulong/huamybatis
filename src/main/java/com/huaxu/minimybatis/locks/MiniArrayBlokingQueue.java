@@ -5,7 +5,7 @@ import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-public class MiniArrayBrokingQueue implements BrokingQueue {
+public class MiniArrayBlokingQueue implements BrokingQueue {
 
     private Lock lock = new ReentrantLock();
 
@@ -32,7 +32,7 @@ public class MiniArrayBrokingQueue implements BrokingQueue {
      */
     private int count, putCtr, takeCtr;
 
-    public MiniArrayBrokingQueue(int size){
+    public MiniArrayBlokingQueue(int size){
         this.size = size;
         this.queues = new Object[size];
     }
@@ -42,7 +42,7 @@ public class MiniArrayBrokingQueue implements BrokingQueue {
         lock.lock();
         try {
             //第一件事？ 判断一下当前queues是否已经满了...
-            if(count == this.size) {
+            while (count == this.size){
                 notFull.await();
             }
 
@@ -68,7 +68,7 @@ public class MiniArrayBrokingQueue implements BrokingQueue {
         lock.lock();
         try {
             //第一件事？判断一下当前队列是否有数据可以被消费...
-            if(count == 0) {
+            while (count == 0) {
                 notEmpty.await();
             }
 
@@ -91,7 +91,7 @@ public class MiniArrayBrokingQueue implements BrokingQueue {
     }
 
     public static void main(String[] args) {
-        BrokingQueue<Integer> queue = new MiniArrayBrokingQueue(10);
+        BrokingQueue<Integer> queue = new MiniArrayBlokingQueue(10);
 
         Thread producer = new Thread(() -> {
             int i = -1;
