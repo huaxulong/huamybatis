@@ -48,6 +48,7 @@ public class CountDownLatchTest3 {
         Thread t4 = new Thread(()-> {
             try {
                 // 阻塞，等待 state 减为 0
+                /*Thread.sleep(50);*/
                 latch.await();
                 System.out.println("线程 t4 从 await 中返回了");
             } catch (InterruptedException e) {
@@ -59,6 +60,7 @@ public class CountDownLatchTest3 {
         Thread t5 = new Thread(()-> {
             try {
                 // 阻塞，等待 state 减为 0
+                Thread.sleep(100);
                 latch.await();
                 System.out.println("线程 t5 从 await 中返回了");
             } catch (InterruptedException e) {
@@ -69,6 +71,7 @@ public class CountDownLatchTest3 {
 
         Thread t6 = new Thread(()-> {
             try {
+                Thread.sleep(200);
                 // 阻塞，等待 state 减为 0
                 latch.await();
                 System.out.println("线程 t6 从 await 中返回了");

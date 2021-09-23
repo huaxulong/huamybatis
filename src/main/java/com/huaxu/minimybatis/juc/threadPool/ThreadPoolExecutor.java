@@ -1461,6 +1461,7 @@ public class ThreadPoolExecutor extends AbstractExecutorService {
         //执行到这里有几种情况？
         //1.当前线程数量已经达到corePoolSize
         //2.addWorker失败..
+        //3.初始情况, 目前还没有工作线程 workCountOf == 0 , 而 corePoolSize 也设置成 0
 
         //条件成立：说明当前线程池处于running状态，则尝试将 task 放入到workQueue中。
         if (isRunning(c) && workQueue.offer(command)) {

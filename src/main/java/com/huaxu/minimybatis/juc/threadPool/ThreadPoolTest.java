@@ -26,7 +26,7 @@ public class ThreadPoolTest {
 
         ArrayBlockingQueue blockingQueue = new ArrayBlockingQueue(20, true);
 
-        ThreadPoolExecutor executor = new ThreadPoolExecutor(0, 10, 20, TimeUnit.MILLISECONDS, blockingQueue);
+        ThreadPoolExecutor executor = new ThreadPoolExecutor(5, 10, 20, TimeUnit.MILLISECONDS, blockingQueue);
 
         for (int i = 0; i < 5; i++) {
 

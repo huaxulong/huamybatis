@@ -109,29 +109,29 @@ public class AbstractQueuedSynchronizer extends AbstractOwnableSynchronizer impl
      * expert group, for helpful ideas, discussions, and critiques
      * on the design of this class.
      */
-    static final class Node {
+    public static final class Node {
         /** Marker to indicate a node is waiting in shared mode */
         //枚举：共享模式
-        static final Node SHARED = new Node();
+        public static final Node SHARED = new Node();
         /** Marker to indicate a node is waiting in exclusive mode */
         //枚举：独占模式
-        static final Node EXCLUSIVE = null;
+        public static final Node EXCLUSIVE = null;
 
         /** waitStatus value to indicate thread has cancelled */
         //表示当前节点处于 取消 状态
-        static final int CANCELLED =  1;
+        public static final int CANCELLED =  1;
         /** waitStatus value to indicate successor's thread needs unparking */
         //注释：表示当前节点需要唤醒他的后继节点。（SIGNAL 表示其实是 后继节点的状态，需要当前节点去喊它...）
-        static final int SIGNAL    = -1;
+        public static final int SIGNAL    = -1;
         /** waitStatus value to indicate thread is waiting on condition */
         //先不说...
-        static final int CONDITION = -2;
+        public static final int CONDITION = -2;
         /**
          * waitStatus value to indicate the next acquireShared should
          * unconditionally propagate
          */
         //先不说...
-        static final int PROPAGATE = -3;
+        public static final int PROPAGATE = -3;
 
         /**
          * Status field, taking on only the values:
@@ -245,7 +245,7 @@ public class AbstractQueuedSynchronizer extends AbstractOwnableSynchronizer impl
                 return p;
         }
 
-        Node() {    // Used to establish initial head or SHARED marker
+        public Node() {    // Used to establish initial head or SHARED marker
         }
 
         Node(Thread thread, Node mode) {     // Used by addWaiter
@@ -266,7 +266,7 @@ public class AbstractQueuedSynchronizer extends AbstractOwnableSynchronizer impl
      * CANCELLED.
      */
     //头结点 任何时刻 头结点对应的线程都是当前持锁线程。
-    private transient volatile Node head;
+    private transient volatile Node head = new Node(null, 0);
 
     /**
      * Tail of the wait queue, lazily initialized.  Modified only via
@@ -368,7 +368,7 @@ public class AbstractQueuedSynchronizer extends AbstractOwnableSynchronizer impl
      */
     //AQS#addWaiter
     //最终返回当前线程包装出来的node
-    private Node addWaiter(Node mode) {
+    Node addWaiter(Node mode) {
         //Node.EXCLUSIVE
         //构建Node ，把当前线程封装到对象node中了
         Node node = new Node(Thread.currentThread(), mode);
@@ -403,7 +403,7 @@ public class AbstractQueuedSynchronizer extends AbstractOwnableSynchronizer impl
      *
      * @param node the node
      */
-    private void setHead(Node node) {
+    void setHead(Node node) {
         head = node;
         node.thread = null;
         node.prev = null;
@@ -419,7 +419,7 @@ public class AbstractQueuedSynchronizer extends AbstractOwnableSynchronizer impl
     /**
      * 唤醒当前节点的下一个节点。
      */
-    private void unparkSuccessor(Node node) {
+    void unparkSuccessor(Node node) {
         //获取当前节点的状态
         int ws = node.waitStatus;
 
@@ -529,7 +529,7 @@ public class AbstractQueuedSynchronizer extends AbstractOwnableSynchronizer impl
     /**
      * 取消指定node参与竞争。
      */
-    private void cancelAcquire(Node node) {
+    void cancelAcquire(Node node) {
         //空判断..
         if (node == null)
             return;
@@ -613,7 +613,7 @@ public class AbstractQueuedSynchronizer extends AbstractOwnableSynchronizer impl
      * 参数二：node 当前线程对应node
      * 返回值：boolean  true 表示当前线程需要挂起..
      */
-    private static boolean shouldParkAfterFailedAcquire(Node pred, Node node) {
+    static boolean shouldParkAfterFailedAcquire(Node pred, Node node) {
         //获取前置节点的状态
         //waitStatus：0 默认状态 new Node() ； -1 Signal状态，表示当前节点释放锁之后会唤醒它的第一个后继节点； >0 表示当前节点是CANCELED状态
         int ws = pred.waitStatus;
@@ -654,7 +654,7 @@ public class AbstractQueuedSynchronizer extends AbstractOwnableSynchronizer impl
      */
     //AQS#parkAndCheckInterrupt
     //park当前线程 将当前线程 挂起，唤醒后返回当前线程 是否为 中断信号 唤醒。
-    private final boolean parkAndCheckInterrupt() {
+    final boolean parkAndCheckInterrupt() {
         LockSupport.park(this);
         return Thread.interrupted();
     }
@@ -1162,7 +1162,7 @@ public class AbstractQueuedSynchronizer extends AbstractOwnableSynchronizer impl
      * you like.
      * @throws InterruptedException if the current thread is interrupted
      */
-    public final void acquireSharedInterruptibly(int arg)
+    public void acquireSharedInterruptibly(int arg)
             throws InterruptedException {
         if (Thread.interrupted())
             throw new InterruptedException();
@@ -1203,7 +1203,7 @@ public class AbstractQueuedSynchronizer extends AbstractOwnableSynchronizer impl
      *        and can represent anything you like.
      * @return the value returned from {@link #tryReleaseShared}
      */
-    public final boolean releaseShared(int arg) {
+    public boolean releaseShared(int arg) {
         if (tryReleaseShared(arg)) {
             doReleaseShared();
             return true;
@@ -2316,9 +2316,9 @@ public class AbstractQueuedSynchronizer extends AbstractOwnableSynchronizer impl
     /**
      * CAS waitStatus field of a node.
      */
-    private static final boolean compareAndSetWaitStatus(Node node,
-                                                         int expect,
-                                                         int update) {
+    static final boolean compareAndSetWaitStatus(Node node,
+                                                 int expect,
+                                                 int update) {
         return unsafe.compareAndSwapInt(node, waitStatusOffset,
                 expect, update);
     }

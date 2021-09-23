@@ -1,6 +1,7 @@
 package com.huaxu.minimybatis.juc.lock.countlatch;
 
-import test.lock.aqs.AbstractQueuedSynchronizer;
+
+import com.huaxu.minimybatis.juc.lock.aqs.AbstractQueuedSynchronizer;
 
 import java.util.concurrent.TimeUnit;
 
