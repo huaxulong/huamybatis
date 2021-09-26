@@ -12,31 +12,36 @@ import java.util.concurrent.TimeUnit;
  */
 public class ThreadPoolTest {
 
-    /*public static void main(String[] args) {
-        try {
-            return;
-        }catch (Exception e){
-            e.printStackTrace();
-        }finally {
-            System.out.println("abc");
-        }
-    }*/
     public static void main(String[] args) {
         Worker worker = new Worker();
 
         ArrayBlockingQueue blockingQueue = new ArrayBlockingQueue(20, true);
 
-        ThreadPoolExecutor executor = new ThreadPoolExecutor(5, 10, 20, TimeUnit.MILLISECONDS, blockingQueue);
+        ThreadPoolExecutor executor = new ThreadPoolExecutor(0, 10, 20, TimeUnit.MILLISECONDS, blockingQueue);
 
-        for (int i = 0; i < 5; i++) {
+        executor.allowCoreThreadTimeOut(true);
+
+        for (int i = 0; i < 15; i++) {
 
             executor.execute(worker);
+
         }
 
+
+        try {
+            TimeUnit.SECONDS.sleep(5);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        System.out.println("主线程开始执行～");
+        executor.execute(worker);
 
         //executor.shutdown();
 
         //executor.terminated();
+
+
     }
 
     public static class Worker implements Runnable {
@@ -45,11 +50,10 @@ public class ThreadPoolTest {
         public void run() {
             System.out.println("线程名称: " + Thread.currentThread().getName() + "  开始执行");
             try {
-                Thread.sleep(1 * 1000);
+                Thread.sleep(1 * 20);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            System.out.println("线程名称: " + Thread.currentThread().getName() + "  执行结束");
         }
     }
 

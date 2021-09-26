@@ -808,9 +808,6 @@ public class ThreadPoolExecutor extends AbstractExecutorService {
         }
 
 
-
-
-
         //表示创建的worker是否已经启动，false未启动  true启动
         boolean workerStarted = false;
         //表示创建的worker是否添加到池子中了 默认false 未添加 true是添加。
@@ -1440,6 +1437,7 @@ public class ThreadPoolExecutor extends AbstractExecutorService {
         int c = ctl.get();
         //workerCountOf(c) 获取出当前线程数量
         //条件成立：表示当前线程数量小于核心线程数，此次提交任务，直接创建一个新的worker，对应线程池中多了一个新的线程。
+        //System.out.println("工作线程数量：" + workerCountOf(c));
         if (workerCountOf(c) < corePoolSize) {
             //addWorker 即为创建线程的过程，会创建worker对象，并且将command作为firstTask
             //core == true 表示采用核心线程数量限制  false表示采用 maximumPoolSize
