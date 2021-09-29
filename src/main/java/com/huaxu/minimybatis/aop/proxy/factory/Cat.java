@@ -15,4 +15,9 @@ public class Cat implements Animal {
         System.out.println("cat 吃 喵粮 ～～");
     }
 
+    @Override
+    public void go() {
+        System.out.println("dog 跑了 ～～～");
+    }
+
 }

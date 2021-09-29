@@ -1,6 +1,5 @@
 package com.huaxu.minimybatis.aop.proxy.newChainDemo;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -38,6 +37,9 @@ public class JdkDynamicProxy implements InvocationHandler {
 
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+        if (method.getName().equals("toString")) {
+            return null;
+        }
         TargetMethod targetMethod = new TargetMethod();
         targetMethod.setTarget(target);
         targetMethod.setMethod(method);
