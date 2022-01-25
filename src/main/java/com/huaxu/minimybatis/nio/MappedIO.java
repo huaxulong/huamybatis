@@ -32,7 +32,7 @@ public class MappedIO {
                 test();
                 long duration = System.nanoTime() - start;
 //            System.out.println("%.2f\n", duration / 1.0e9);
-                System.out.println("duration : " + duration);
+                System.out.println("duration : " + String.format("%.2f", duration / 1.0e6) + " 毫秒");
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -106,8 +106,6 @@ public class MappedIO {
         for (Tester test : tests){
             test.runTest();
         }
-
-        System.out.println("abc");
     }
 
 }
