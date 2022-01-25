@@ -33,9 +33,9 @@ public class MyPointCut implements Pointcut {
             @Override
             public boolean matches(Method method, Class<?> targetClass) {
                 // 如果方法名称是 go , 则匹配， 否则不匹配。
-                if (method.getName().equals("go")) {
+                /*if (method.getName().equals("go")) {
                     return true;
-                }
+                }*/
                 return false;
             }
         };

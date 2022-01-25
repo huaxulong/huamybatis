@@ -31,8 +31,8 @@ public class ProxyFactoryDemo {
 
         Animal catProxy = (Animal) factory.getProxy();
 
-        System.out.println(catProxy.getClass());
-        catProxy.eat();
+        //System.out.println(catProxy.getClass());
+        //catProxy.eat();
 
         System.out.println("---------------------->>>-->>>-->>>-------");
 

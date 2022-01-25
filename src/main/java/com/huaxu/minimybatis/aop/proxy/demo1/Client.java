@@ -10,7 +10,7 @@ package com.huaxu.minimybatis.aop.proxy.demo1;
  */
 public class Client {
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) {
         Cat catTarget = new Cat();
 
         JdkDynamicProxy proxy = new JdkDynamicProxy(catTarget);

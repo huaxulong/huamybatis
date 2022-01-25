@@ -17,7 +17,7 @@ public class Cat implements Animal {
 
     @Override
     public void go() {
-        System.out.println("dog 跑了 ～～～");
+        System.out.println("cat 跑了 ～～～");
     }
 
 }
