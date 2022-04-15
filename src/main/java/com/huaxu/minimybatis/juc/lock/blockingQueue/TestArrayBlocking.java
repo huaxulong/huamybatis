@@ -12,8 +12,8 @@ import java.util.concurrent.ArrayBlockingQueue;
 public class TestArrayBlocking {
 
     public static void main(String[] args) throws Exception {
-		insertBlocking();
-//		fetchBlocking();
+//		insertBlocking();
+		fetchBlocking();
 
 //        ArrayBlockingQueue<String> abq = new ArrayBlockingQueue<String>(10);
 //        testProducerConsumer(abq);
@@ -43,8 +43,8 @@ public class TestArrayBlocking {
     public static void fetchBlocking() throws InterruptedException {
         ArrayBlockingQueue<String> names = new ArrayBlockingQueue<String>(1);
         names.put("a");
-        names.remove();
-        names.remove();
+//        names.remove();
+//        names.remove();
         names.put("b");
 
         System.out.println("程序执行到此...");

@@ -24,19 +24,20 @@ public class CountDownLatchTest {
                 public void run() {
                     try {
                         System.out.println("子线程" + Thread.currentThread().getName() + "开始执行");
-                        Thread.sleep((long) (Math.random() * 10000));
+                        //Thread.sleep((long) (Math.random() * 1000));
                         System.out.println("子线程"+Thread.currentThread().getName()+"执行完成");
                         latch.countDown();//当前线程调用此方法，则计数减一
-                    } catch (InterruptedException e) {
+                    } catch (Exception e) {
                         e.printStackTrace();
                     }
                 }
             };
-            service.execute(runnable);
+            service.submit(runnable);
         }
 
         try {
             System.out.println("主线程"+Thread.currentThread().getName()+"等待子线程执行完成...");
+            Thread.sleep((long) (1000));
             latch.await();//阻塞当前线程，直到计数器的值为0
             System.out.println("主线程"+Thread.currentThread().getName()+"开始执行...");
 

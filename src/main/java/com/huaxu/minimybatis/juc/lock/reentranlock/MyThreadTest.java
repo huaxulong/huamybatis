@@ -27,8 +27,7 @@ public class MyThreadTest {
     }
 
     public void add() throws InterruptedException {
-        lock.lockInterruptibly();//申请获得锁
-        try {
+        try {lock.lock();//申请获得锁
             System.out.println(Thread.currentThread().getName() + " 线程获得锁～");
             //一般为了安全,一般用try把同步代码块的内容包裹起来
             //保证即使当前线程运行过程中出现异常,也能正常释放锁
@@ -36,9 +35,9 @@ public class MyThreadTest {
                 count++;
             }
         } finally {
+            lock.unlock();
             //一般在finally里释放锁
             System.out.println(Thread.currentThread().getName() + " 线程释放锁～");
-            lock.unlock();
         }
     }
 
