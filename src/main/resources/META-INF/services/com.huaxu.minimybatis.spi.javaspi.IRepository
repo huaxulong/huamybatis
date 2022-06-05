@@ -1,0 +1,2 @@
+com.huaxu.minimybatis.spi.javaspi.MongoRepository
+com.huaxu.minimybatis.spi.javaspi.MysqlRepository
