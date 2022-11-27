@@ -250,3 +250,87 @@ com.huaxu.minimybatis.spi.dubbospi.MyCar extension = (com.huaxu.minimybatis.spi.
 }, dubbo version: 2.6.5, current host: 192.168.0.102
 [WARN][22-08-14][com.alibaba.dubbo.config.spring.extension.SpringExtensionFactory] [DUBBO] No spring extension (bean) named:defaultCompiler, try to find an extension (bean) of type java.lang.String, dubbo version: 2.6.5, current host: 192.168.0.102
 [WARN][22-08-14][com.alibaba.dubbo.config.spring.extension.SpringExtensionFactory] [DUBBO] No spring extension (bean) named:defaultCompiler, type:java.lang.String found, stop get bean., dubbo version: 2.6.5, current host: 192.168.0.102
+[INFO][22-08-14][com.alibaba.dubbo.common.logger.LoggerFactory]using logger: com.alibaba.dubbo.common.logger.log4j.Log4jLoggerAdapter
+[DEBUG][22-08-14][com.alibaba.dubbo.common.extension.ExtensionLoader] [DUBBO] package com.huaxu.minimybatis.spi.dubbospi;
+import com.alibaba.dubbo.common.extension.ExtensionLoader;
+public class MyCar$Adaptive implements com.huaxu.minimybatis.spi.dubbospi.MyCar {
+public void openDoor(com.alibaba.dubbo.common.URL arg0) {
+if (arg0 == null) throw new IllegalArgumentException("url == null");
+com.alibaba.dubbo.common.URL url = arg0;
+String extName = url.getParameter("A_name", url.getParameter("B_name", url.getParameter("name", "spi")));
+if(extName == null) throw new IllegalStateException("Fail to get extension(com.huaxu.minimybatis.spi.dubbospi.MyCar) name from url(" + url.toString() + ") use keys([A_name, B_name, name])");
+com.huaxu.minimybatis.spi.dubbospi.MyCar extension = (com.huaxu.minimybatis.spi.dubbospi.MyCar)ExtensionLoader.getExtensionLoader(com.huaxu.minimybatis.spi.dubbospi.MyCar.class).getExtension(extName);extension.openDoor(arg0);
+}
+public void run(com.alibaba.dubbo.common.URL arg0) {
+if (arg0 == null) throw new IllegalArgumentException("url == null");
+com.alibaba.dubbo.common.URL url = arg0;
+String extName = url.getParameter("A_name", url.getParameter("B_name", url.getParameter("name", "spi")));
+if(extName == null) throw new IllegalStateException("Fail to get extension(com.huaxu.minimybatis.spi.dubbospi.MyCar) name from url(" + url.toString() + ") use keys([A_name, B_name, name])");
+com.huaxu.minimybatis.spi.dubbospi.MyCar extension = (com.huaxu.minimybatis.spi.dubbospi.MyCar)ExtensionLoader.getExtensionLoader(com.huaxu.minimybatis.spi.dubbospi.MyCar.class).getExtension(extName);extension.run(arg0);
+}
+}, dubbo version: 2.6.5, current host: 192.168.0.102
+[WARN][22-08-14][com.alibaba.dubbo.config.spring.extension.SpringExtensionFactory] [DUBBO] No spring extension (bean) named:defaultCompiler, try to find an extension (bean) of type java.lang.String, dubbo version: 2.6.5, current host: 192.168.0.102
+[WARN][22-08-14][com.alibaba.dubbo.config.spring.extension.SpringExtensionFactory] [DUBBO] No spring extension (bean) named:defaultCompiler, type:java.lang.String found, stop get bean., dubbo version: 2.6.5, current host: 192.168.0.102
+[INFO][22-08-15][com.alibaba.dubbo.common.logger.LoggerFactory]using logger: com.alibaba.dubbo.common.logger.log4j.Log4jLoggerAdapter
+[DEBUG][22-08-15][com.alibaba.dubbo.common.extension.ExtensionLoader] [DUBBO] package com.huaxu.minimybatis.spi.dubbospi;
+import com.alibaba.dubbo.common.extension.ExtensionLoader;
+public class MyCar$Adaptive implements com.huaxu.minimybatis.spi.dubbospi.MyCar {
+public void openDoor(com.alibaba.dubbo.common.URL arg0) {
+if (arg0 == null) throw new IllegalArgumentException("url == null");
+com.alibaba.dubbo.common.URL url = arg0;
+String extName = url.getParameter("A_name", url.getParameter("B_name", url.getParameter("name", "spi")));
+if(extName == null) throw new IllegalStateException("Fail to get extension(com.huaxu.minimybatis.spi.dubbospi.MyCar) name from url(" + url.toString() + ") use keys([A_name, B_name, name])");
+com.huaxu.minimybatis.spi.dubbospi.MyCar extension = (com.huaxu.minimybatis.spi.dubbospi.MyCar)ExtensionLoader.getExtensionLoader(com.huaxu.minimybatis.spi.dubbospi.MyCar.class).getExtension(extName);extension.openDoor(arg0);
+}
+public void run(com.alibaba.dubbo.common.URL arg0) {
+if (arg0 == null) throw new IllegalArgumentException("url == null");
+com.alibaba.dubbo.common.URL url = arg0;
+String extName = url.getParameter("A_name", url.getParameter("B_name", url.getParameter("name", "spi")));
+if(extName == null) throw new IllegalStateException("Fail to get extension(com.huaxu.minimybatis.spi.dubbospi.MyCar) name from url(" + url.toString() + ") use keys([A_name, B_name, name])");
+com.huaxu.minimybatis.spi.dubbospi.MyCar extension = (com.huaxu.minimybatis.spi.dubbospi.MyCar)ExtensionLoader.getExtensionLoader(com.huaxu.minimybatis.spi.dubbospi.MyCar.class).getExtension(extName);extension.run(arg0);
+}
+}, dubbo version: 2.6.5, current host: 192.168.0.102
+[WARN][22-08-15][com.alibaba.dubbo.config.spring.extension.SpringExtensionFactory] [DUBBO] No spring extension (bean) named:defaultCompiler, try to find an extension (bean) of type java.lang.String, dubbo version: 2.6.5, current host: 192.168.0.102
+[WARN][22-08-15][com.alibaba.dubbo.config.spring.extension.SpringExtensionFactory] [DUBBO] No spring extension (bean) named:defaultCompiler, type:java.lang.String found, stop get bean., dubbo version: 2.6.5, current host: 192.168.0.102
+[INFO][22-08-24][com.alibaba.dubbo.common.logger.LoggerFactory]using logger: com.alibaba.dubbo.common.logger.log4j.Log4jLoggerAdapter
+[DEBUG][22-08-24][com.alibaba.dubbo.common.extension.ExtensionLoader] [DUBBO] package com.huaxu.minimybatis.spi.dubbospi;
+import com.alibaba.dubbo.common.extension.ExtensionLoader;
+public class MyCar$Adaptive implements com.huaxu.minimybatis.spi.dubbospi.MyCar {
+public void openDoor(com.alibaba.dubbo.common.URL arg0) {
+if (arg0 == null) throw new IllegalArgumentException("url == null");
+com.alibaba.dubbo.common.URL url = arg0;
+String extName = url.getParameter("A_name", url.getParameter("B_name", url.getParameter("name", "spi")));
+if(extName == null) throw new IllegalStateException("Fail to get extension(com.huaxu.minimybatis.spi.dubbospi.MyCar) name from url(" + url.toString() + ") use keys([A_name, B_name, name])");
+com.huaxu.minimybatis.spi.dubbospi.MyCar extension = (com.huaxu.minimybatis.spi.dubbospi.MyCar)ExtensionLoader.getExtensionLoader(com.huaxu.minimybatis.spi.dubbospi.MyCar.class).getExtension(extName);extension.openDoor(arg0);
+}
+public void run(com.alibaba.dubbo.common.URL arg0) {
+if (arg0 == null) throw new IllegalArgumentException("url == null");
+com.alibaba.dubbo.common.URL url = arg0;
+String extName = url.getParameter("A_name", url.getParameter("B_name", url.getParameter("name", "spi")));
+if(extName == null) throw new IllegalStateException("Fail to get extension(com.huaxu.minimybatis.spi.dubbospi.MyCar) name from url(" + url.toString() + ") use keys([A_name, B_name, name])");
+com.huaxu.minimybatis.spi.dubbospi.MyCar extension = (com.huaxu.minimybatis.spi.dubbospi.MyCar)ExtensionLoader.getExtensionLoader(com.huaxu.minimybatis.spi.dubbospi.MyCar.class).getExtension(extName);extension.run(arg0);
+}
+}, dubbo version: 2.6.5, current host: 192.168.0.102
+[WARN][22-08-24][com.alibaba.dubbo.config.spring.extension.SpringExtensionFactory] [DUBBO] No spring extension (bean) named:defaultCompiler, try to find an extension (bean) of type java.lang.String, dubbo version: 2.6.5, current host: 192.168.0.102
+[WARN][22-08-24][com.alibaba.dubbo.config.spring.extension.SpringExtensionFactory] [DUBBO] No spring extension (bean) named:defaultCompiler, type:java.lang.String found, stop get bean., dubbo version: 2.6.5, current host: 192.168.0.102
+[INFO][22-08-24][com.alibaba.dubbo.common.logger.LoggerFactory]using logger: com.alibaba.dubbo.common.logger.log4j.Log4jLoggerAdapter
+[DEBUG][22-08-24][com.alibaba.dubbo.common.extension.ExtensionLoader] [DUBBO] package com.huaxu.minimybatis.spi.dubbospi;
+import com.alibaba.dubbo.common.extension.ExtensionLoader;
+public class MyCar$Adaptive implements com.huaxu.minimybatis.spi.dubbospi.MyCar {
+public void openDoor(com.alibaba.dubbo.common.URL arg0) {
+if (arg0 == null) throw new IllegalArgumentException("url == null");
+com.alibaba.dubbo.common.URL url = arg0;
+String extName = url.getParameter("A_name", url.getParameter("B_name", url.getParameter("name", "spi")));
+if(extName == null) throw new IllegalStateException("Fail to get extension(com.huaxu.minimybatis.spi.dubbospi.MyCar) name from url(" + url.toString() + ") use keys([A_name, B_name, name])");
+com.huaxu.minimybatis.spi.dubbospi.MyCar extension = (com.huaxu.minimybatis.spi.dubbospi.MyCar)ExtensionLoader.getExtensionLoader(com.huaxu.minimybatis.spi.dubbospi.MyCar.class).getExtension(extName);extension.openDoor(arg0);
+}
+public void run(com.alibaba.dubbo.common.URL arg0) {
+if (arg0 == null) throw new IllegalArgumentException("url == null");
+com.alibaba.dubbo.common.URL url = arg0;
+String extName = url.getParameter("A_name", url.getParameter("B_name", url.getParameter("name", "spi")));
+if(extName == null) throw new IllegalStateException("Fail to get extension(com.huaxu.minimybatis.spi.dubbospi.MyCar) name from url(" + url.toString() + ") use keys([A_name, B_name, name])");
+com.huaxu.minimybatis.spi.dubbospi.MyCar extension = (com.huaxu.minimybatis.spi.dubbospi.MyCar)ExtensionLoader.getExtensionLoader(com.huaxu.minimybatis.spi.dubbospi.MyCar.class).getExtension(extName);extension.run(arg0);
+}
+}, dubbo version: 2.6.5, current host: 192.168.0.102
+[WARN][22-08-24][com.alibaba.dubbo.config.spring.extension.SpringExtensionFactory] [DUBBO] No spring extension (bean) named:defaultCompiler, try to find an extension (bean) of type java.lang.String, dubbo version: 2.6.5, current host: 192.168.0.102
+[WARN][22-08-24][com.alibaba.dubbo.config.spring.extension.SpringExtensionFactory] [DUBBO] No spring extension (bean) named:defaultCompiler, type:java.lang.String found, stop get bean., dubbo version: 2.6.5, current host: 192.168.0.102

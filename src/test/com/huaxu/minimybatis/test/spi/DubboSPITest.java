@@ -23,6 +23,8 @@ public class DubboSPITest {
         URL url = URL.valueOf("http://localhost:9999/xxx?name=Mercedes&B_name=BMW");
         car.run(url);
         car.openDoor(URL.valueOf("http://localhost:9999/xxx?A_name=Mercedes&B_name=BMW"));
+
+        car.run(URL.valueOf("http://localhost:9999/xxx"));
     }
 
 }
