@@ -9,6 +9,8 @@ public class TreeNode {
 
     private int value;
 
+    public String val;
+
     private TreeNode left;
 
     private TreeNode right;

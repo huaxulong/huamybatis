@@ -1,8 +1,8 @@
 package com.huaxu.minimybatis.algorithm.tree;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Stack;
+import com.google.common.collect.Lists;
+
+import java.util.*;
 
 /**
  * @description:
@@ -21,12 +21,12 @@ public class ErgodicTree {
 
 
         ErgodicTree tree = new ErgodicTree();
-        tree.getResult(root);
+        List<Integer> result2 = tree.getResult2(root);
 
-        System.out.println(list);
+        List<Integer> result = tree.getResult(root);
+        result.forEach(System.out::println);
     }
 
-    private static List<Integer> list = new ArrayList<>();
 
     /**
      * 递归法 / 迭代法 => 深度优先遍历
@@ -34,7 +34,7 @@ public class ErgodicTree {
      *
      * @param root
      */
-    public void getResult(TreeNode root) {
+    private void getResult(TreeNode root, List<Integer> list) {
         if (root == null) {
             return;
         }
@@ -47,8 +47,15 @@ public class ErgodicTree {
         list.add(root.getValue());
     }
 
+    public List<Integer> getResult(TreeNode root) {
+        List<Integer> list = new ArrayList<>();
+        getResult(root, list);
+        return list;
+    }
+
     /**
-     * 因为递归的本质其实也是使用的是栈这种数据结构， 所以这里就使用栈的迭代法来模拟递归
+     * 因为递归的本质其实也是使用的是栈这种数据结构， 所以这里就使用栈的迭代法来模拟递归.
+     * 比如中序遍历 -》 根 =》 左 =》 右
      *
      * @param root
      * @return
@@ -69,6 +76,49 @@ public class ErgodicTree {
             }
         }
         return list1;
+    }
+
+    /**
+     * 用栈的方式进行中序遍历： 左 =》中 =》 右
+     * 5
+     * 4       6
+     * 1       2
+     *
+     * @param root
+     * @return
+     */
+    public List<Integer> getResult2(TreeNode root) {
+        ArrayList<Integer> result = Lists.newArrayList();
+        Stack<TreeNode> stack = new Stack<>();
+        TreeNode cur = root;
+        while (cur != null || !stack.isEmpty()) {
+            if (cur != null) {
+                stack.push(cur);
+                cur = cur.getLeft();
+            } else {
+                cur = stack.pop();
+                result.add(cur.getValue());
+                cur = cur.getRight();
+            }
+        }
+        return result;
+    }
+
+    /**
+     * leetcode:102 二叉树的层次遍历
+     *
+     * @param root
+     * @return
+     */
+    public List<List<Integer>> levelOrder(TreeNode root) {
+        Queue<TreeNode> queue = new ArrayDeque<>();
+        queue.add(root);
+        List<Integer> list1 = new ArrayList<>();
+        while (!queue.isEmpty()) {
+            TreeNode peek = queue.peek();
+            list1.add(peek.getValue());
+        }
+        return null;
     }
 
 }
