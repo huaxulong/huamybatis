@@ -7,13 +7,13 @@ package com.huaxu.minimybatis.algorithm.tree;
  */
 public class TreeNode {
 
-    private int value;
+    public int value;
 
     public String val;
 
-    private TreeNode left;
+    public TreeNode left;
 
-    private TreeNode right;
+    public TreeNode right;
 
     public TreeNode(int value, TreeNode left, TreeNode right) {
         this.value = value;
