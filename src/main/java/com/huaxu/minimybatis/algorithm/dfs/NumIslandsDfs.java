@@ -1,11 +1,11 @@
-package com.huaxu.minimybatis.algorithm.bfs;
+package com.huaxu.minimybatis.algorithm.dfs;
 
 /**
  * @description:
  * @Author: Mr.Hua
  * @date: 2024/1/20 14:34
  */
-public class NumIslands {
+public class NumIslandsDfs {
 
     public static void main(String[] args) {
         char[][] grid = {{'1', '1', '1', '1', '0'}, {'1', '1', '0', '1', '0'}, {'1', '1', '0', '0', '0'}, {'0', '0', '0', '0', '0'}};
