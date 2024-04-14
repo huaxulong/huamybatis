@@ -1,9 +1,6 @@
 package com.huaxu.minimybatis.stack;
 
 import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
-import java.util.Stack;
 
 /**
  * @description: 删除字符串中的所有相邻重复项
@@ -23,19 +20,19 @@ public class RemoveDuplicates {
         LinkedList<Character> stack = new LinkedList<>();
         char[] chars = s.toCharArray();
         for (Character ch : chars) {
-            if (stack.isEmpty()){
+            if (stack.isEmpty()) {
                 stack.add(ch);
-            }else {
+            } else {
                 Character peek = stack.getLast();
-                if (peek == ch){
+                if (peek == ch) {
                     stack.removeLast();
-                }else {
+                } else {
                     stack.add(ch);
                 }
             }
         }
         String result = "";
-        if (!stack.isEmpty()){
+        if (!stack.isEmpty()) {
             for (int i = 0; i < stack.size(); i++) {
                 result = result + stack.get(i);
             }
