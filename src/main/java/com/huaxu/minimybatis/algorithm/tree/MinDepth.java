@@ -16,37 +16,24 @@ public class MinDepth {
             return depth;
         }
         Queue<TreeNode> queue = new ArrayDeque<>();
-        boolean flag = false;
-        if (root.left != null && root.right != null) {
-            queue.add(root.left);
-            queue.add(root.right);
-            flag = true;
-        } else if (root.left != null) {
-            queue.add(root.left);
-        } else if (root.right != null) {
-            queue.add(root.right);
-        }
+        queue.add(root);
         depth = 1;
-        int cnt = queue.size();
 
         while (!queue.isEmpty()) {
-            depth++;
-            int count = cnt;
-            for (int i = 0; i < count; i++) {
+            int size = queue.size();
+            for (int i = 0; i < size; i++) {
                 TreeNode node = queue.poll();
-                cnt--;
-                if (flag && (node.left == null || node.right == null)) {
+                if (node.left == null && node.right == null) {
                     return depth;
                 }
-                if (node.left != null) {
+                if (null != node.left) {
                     queue.add(node.left);
-                    cnt++;
                 }
-                if (node.right != null) {
+                if (null != node.right) {
                     queue.add(node.right);
-                    cnt++;
                 }
             }
+            depth++;
         }
         return depth;
     }

@@ -1,9 +1,6 @@
 package com.huaxu.minimybatis.algorithm.backtrace;
 
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 
 /**
  * @description: 全排列
@@ -21,28 +18,38 @@ public class Permute {
 
     List<List<Integer>> routes = new ArrayList<>();
 
-    Queue<Integer> visited = new ArrayDeque<>();
-
+    /**
+     * 全排列：元素无重，不可复选
+     *
+     * @param nums
+     * @return
+     */
     public List<List<Integer>> permute(int[] nums) {
         List<Integer> route = new ArrayList<>();
-        backtrace(nums, route);
+
+        // 「路径」中的元素会被标记为 true，避免重复使用
+        boolean[] used = new boolean[nums.length];
+
+        backtrace(nums, route, used);
         return routes;
     }
 
-    public void backtrace(int[] nums, List<Integer> route) {
-        if (route.size() == nums.length) {
-            routes.add(new ArrayList<>(route));
+    private void backtrace(int[] nums, List<Integer> route, boolean[] used) {
+        if (route.size() == nums.length){
+            routes.add(new LinkedList<>(route));
         }
         for (int i = 0; i < nums.length; i++) {
-            int num = nums[i];
-            if (visited.contains(num)) {
+            if (route.contains(nums[i])){
                 continue;
             }
-            visited.add(nums[i]);
+            if (used[i]){
+                continue;
+            }
             route.add(nums[i]);
-            backtrace(nums, route);
+            used[i] = true;
+            backtrace(nums, route, used);
             route.remove(route.size() - 1);
-            visited.remove(nums[i]);
+            used[i] = false;
         }
     }
 
