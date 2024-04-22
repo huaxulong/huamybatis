@@ -72,7 +72,7 @@ void backtrack(int[] nums) {
 ```
 
 形式二、元素可重不可复选，即 nums 中的元素可以存在重复，每个元素最多只能被使用一次，其关键在于排序和剪枝，backtrack 核心代码如下：
-```java
+```
 Arrays.sort(nums);
 /* 组合/子集问题回溯算法框架 */
 void backtrack(int[] nums, int start) {
@@ -118,7 +118,7 @@ void backtrack(int[] nums) {
 ```
 
 形式三、元素无重可复选，即 nums 中的元素都是唯一的，每个元素可以被使用若干次，只要删掉去重逻辑即可，backtrack 核心代码如下：
-```java
+```
 /* 组合/子集问题回溯算法框架 */
 void backtrack(int[] nums, int start) {
     // 回溯算法标准框架
@@ -144,4 +144,27 @@ void backtrack(int[] nums) {
     }
 }
 
+```
+
+图遍历框架， 模板代码：
+
+```
+// 记录遍历过的结点
+boolean [] visited;
+
+// 记录起点到当前节点的路径
+boolean[] onpath;
+
+void traverse(Graph graph, int s) {
+    if(visited[s]) return;
+    // 经过节点 s，标记为已遍历
+    visited[s] = true;
+    // 做选择：标记节点 s 在路径上
+    onPath[s] = true;
+    for (int neighbor : graph.neighbors(s)) {
+        traverse(graph, neighbor);
+    }
+    // 撤销选择：节点 s 离开路径
+    onPath[s] = false;
+}
 ```
